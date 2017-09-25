@@ -15,15 +15,15 @@ end
 describe "Ruby Constant" do
 
   it "references local constants" do
-    expect( More.local ).to eq( __ )
+    expect( More.local ).to eq( "nested" )
   end
 
   it "uses double colon to reference global constants" do
-    expect( More.double_colon ).to eq( __ )
+    expect( More.double_colon ).to eq( "top level" )
   end
 
   it "references nested constants using their complete path" do
-    expect( More::C ).to eq( __ )
+    expect( More::C ).to eq( "top level" )
     expect( ::More::C ).to eq( __ )
   end
 
@@ -78,4 +78,3 @@ describe "Ruby Constant" do
     expect( MyAnimals::Oyster.new.legs_in_oyster ).to eq( __ )
   end
 end
-
