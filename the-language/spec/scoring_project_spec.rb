@@ -28,10 +28,88 @@
 # Your goal is to write the score method.
 
 def score(dice)
-  # You need to write this method
+  calculate_one_score(dice) +
+    calculate_fives_score(dice) +
+    calculate_other_score(dice)
 end
 
-RSpec.describe "scorign a game of greed" do
+def calculate_one_score(dice)
+  if ones(dice) >=3
+    1000 + (100*(ones(dice) - 3))
+  else
+    100*ones(dice)
+  end
+end
+
+def calculate_fives_score(dice)
+  if fives(dice) >=3
+    500 + (50*(fives(dice) - 3))
+  else
+    50*fives(dice)
+  end
+end
+def calculate_other_score(dice)
+  if twos(dice) >= 3
+    200
+  elsif threes(dice) >= 3
+    300
+  elsif fours(dice) >= 3
+    400
+  elsif sixes(dice) >= 3
+    600
+  else
+    0
+  end
+end
+
+
+def sorted(dice)
+  dice.group_by{|x| x}
+end
+
+def ones(dice)
+  if sorted(dice)[1]
+    sorted(dice)[1].length
+  else
+    0
+  end
+end
+def twos(dice)
+  if sorted(dice)[2]
+    sorted(dice)[2].length
+  else
+    0
+  end
+end
+def threes(dice)
+  if sorted(dice)[3]
+    sorted(dice)[3].length
+  else
+    0
+  end
+end
+def fours(dice)
+  if sorted(dice)[4]
+    sorted(dice)[4].length
+  else
+    0
+  end
+end
+def fives(dice)
+  if sorted(dice)[5]
+    sorted(dice)[5].length
+  else
+    0
+  end
+end
+def sixes(dice)
+  if sorted(dice)[6]
+    sorted(dice)[6].length
+  else
+    0
+  end
+end
+RSpec.describe "scoring a game of greed" do
   it "scores an empty list as 0" do
     expect( score([]) ).to eq( 0 )
   end
@@ -73,4 +151,3 @@ RSpec.describe "scorign a game of greed" do
   end
 
 end
-
