@@ -1,8 +1,11 @@
 # Implement a DiceSet Class here:
 #
-# class DiceSet
-#   code ...
-# end
+class DiceSet
+  attr_reader :values
+  def roll(rolls)
+    @values = rolls.times.map { rand(1..6) }
+  end
+end
 #
 
 RSpec.describe "dice set" do
@@ -39,14 +42,16 @@ RSpec.describe "dice set" do
     dice.roll(5)
     second_time = dice.values
 
-    expect( second_time ).not_to eq( first_time ),
-      "Two rolls should not be equal"
+    # expect( second_time ).not_to eq( first_time ),
+    #    "Two rolls should not be equal"
 
     # THINK ABOUT IT:
     #
     # If the rolls are random, then it is possible (although not
     # likely) that two consecutive rolls are equal.  What would be a
     # better way to test this?
+    expect( second_time.object_id ).not_to eq(first_time.object_id),
+      "Should have different object IDs"
   end
 
   it "can roll different numbers of dice" do
