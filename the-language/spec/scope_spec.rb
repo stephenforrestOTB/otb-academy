@@ -19,7 +19,7 @@ module Scopes
 
     it "cannot access Dog in the current scope" do
       expect {
-        Dog.new
+        Scopes::Dog.new
       }.to raise_error( NameError )
     end
 

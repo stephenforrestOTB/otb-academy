@@ -3,7 +3,7 @@ RSpec.describe "Learning ruby" do
   context "using expectations" do
 
     it "checks reality" do
-      expect( true ).to be false # it should be true
+      expect( true ).to be true # it should be true
     end
 
     it "verifies our expectations against reality" do
