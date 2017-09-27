@@ -33,3 +33,8 @@ For example, how much does this basket of books cost?
 1 copy of the fifth book
 
 Answer: 51.20 GBP
+
+## Guidelines
+
+Try to write specs first before writing the code. You might find the work we
+did in the past few days to be a useful reference to how to write RSpec.
