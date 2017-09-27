@@ -38,3 +38,17 @@ Answer: 51.20 GBP
 
 Try to write specs first before writing the code. You might find the work we
 did in the past few days to be a useful reference to how to write RSpec.
+
+## Initial setup
+
+Change into the `harry_potter` directory and:
+
+    bundle
+
+to get the RSpec gem. You can set up your project to run RSpec with
+
+    bundle exec rspec --init
+
+and run RSpec with
+
+    bundle exec rspec
