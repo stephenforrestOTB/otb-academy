@@ -27,11 +27,41 @@
 #
 # Your goal is to write the score method.
 
-def score(dice)
-  # You need to write this method
+def slice_dice(dice)
+  dice.group_by{|a| a}.values.map{|d| d.each_slice(3).to_a}.flatten(1)
 end
 
-RSpec.describe "scorign a game of greed" do
+def group_score(group)
+  if group.length == 3
+    case group[0]
+    when 1
+      1000
+    when 5
+      500
+    else
+      100*group[0]
+    end
+  else
+    case group[0]
+    when 1
+      100 * group.length
+    when 5
+      50 * group.length
+    else
+      0
+    end
+  end
+end
+
+def score(dice)
+  total = 0
+  slice_dice(dice).each do |group|
+    total += group_score(group)
+  end
+  total
+end
+
+RSpec.describe "scoring a game of greed" do
   it "scores an empty list as 0" do
     expect( score([]) ).to eq( 0 )
   end
@@ -73,4 +103,3 @@ RSpec.describe "scorign a game of greed" do
   end
 
 end
-
