@@ -83,6 +83,3 @@ class PubFinder
     end
   end
 end
-
-finder = PubFinder.new
-finder.find_in("m20 4sh")
